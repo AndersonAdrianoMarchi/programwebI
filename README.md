@@ -11,6 +11,7 @@ Neste repositório, serão adicionados todos os arquivos das atividades realizad
 
 - [Aula 1](#aula1)
     Discussão sobre conceitos de HTML, protocolos e abstração. Atividade prática sobre HTML e CSS.
+    Clonamos o repositório localmente.
 - [Aula 2](#aula2)
 
 ## Instalação
