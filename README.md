@@ -22,6 +22,7 @@ Neste repositório, serão adicionados todos os arquivos das atividades realizad
     5.	hotfix: Usada para corrigir bugs críticos em produção, criada a partir do master.
     (link repositório GitHub):https://github.com/AndersonAdrianoMarchi/programwebI.git
 - [Aula 2](#aula2)
+    Revisão e discusão sobre semântica HTML. Feitas práticas 1 e 2 da aula.
 
 ## Instalação
 Passos para instalar e configurar o projeto:
