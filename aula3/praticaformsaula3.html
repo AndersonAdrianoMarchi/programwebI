@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="/aula4/praticacssaula4.css">
+    <link rel="stylesheet" type="text/css" href="../aula4/praticacssaula4.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     <form action="/data/datasaverforforms.php" method="post" target="_blank">
-        <fieldset id="cadastro_pessoas">Cadastro de Pessoas
+        <fieldset class="cadastro_pessoas">Cadastro de Pessoas
             <fieldset id="field1">
                 <label for="nome">Nome:</label>
                 <input title="Nome" type="text" id="nome" name="nome" required max="100">
@@ -42,7 +42,7 @@
                 <br>
                 
                 <label for="cep">CEP:</label>
-                <input title="cep" name="cep" id="cep" type="number" required max="10">
+                <input title="cep" name="cep" id="cep" type="number" required maxlength="10">
                 
                 <br>
 
