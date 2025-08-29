@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/aula4/praticacssaula4.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="../data/datasaverforforms.php" method="post" target="_blank">
+        <fieldset id="cadastro_pessoas">Cadastro de Pessoas
+            <fieldset id="field1">
+                <label for="nome">Nome:</label>
+                <input title="Nome" type="text" id="nome" name="nome" required max="100">
+                <br>
+                <label for="sobrenome">Sobrenome:</label>
+                <input title="Sobrenome" type="text" id="sobrenome" name="sobrenome" required max="100">
+                <br>
+                <label for="email">Email:</label>
+                <input title="email" type="email" id="email" name="email" required>
+            </fieldset>
+
+                <br>
+
+            <fieldset>
+                <label for="data de nascimento">Data de Nascimento:</label>
+                <input title="data_nascimento" type="date" id="data_nascimento" name="data_nascimento" required>
+                <br>
+                <label for="genero">Gênero:</label>
+                <label for="masculino">Masculino</label>
+                <input title="Masculino" name="genero" id="genero_masculino" type="radio" required>
+                <label for="feminino">Feminino</label>
+                <input title="Feminino" name="genero" id="genero_feminino" type="radio" required>
+            </fieldset>
+
+                <br>
+        
+            <fieldset>
+                <label for="logradouro">Logradouro:</label>
+                <input title="logradouro" name="logradouro" id="logradouro" type="text" required max="200">
+                
+                <br>
+                
+                <label for="cep">CEP:</label>
+                <input title="cep" name="cep" id="cep" type="number" required max="10">
+                
+                <br>
+
+                <label for="estado">Estado (UF):</label>
+                <select name="estado" required>
+                    <option value="">Selecione...</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="PR">Paraná</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                </select>
+            </fieldset>
+            <br>
+            <input id="enviar" name="enviar" type="submit">
+            <input name="limpar" id="limpar" type="reset">
+        </fieldset> 
+    </form>
+</body>
+</html>
