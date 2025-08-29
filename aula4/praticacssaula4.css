@@ -1,4 +1,31 @@
 fieldset.cadastro_pessoas {
-    color: aqua;
+    background-color: darkgray;
+    text-align: justify;
 }
+
+fieldset#field1 {
+    background-color: aquamarine;
+    border: 1px solid aquamarine;
+}
+
+fieldset#field2 {
+    background-color: greenyellow;
+    border: 1px solid greenyellow;
+}
+
+fieldset#field3 {
+    background-color: hotpink;
+    border: 1px hotpink;
+}
+
+input#enviar {
+    border-radius: 1px;
+    border-color: green;
+}
+
+input#limpar {
+    border-radius: 1px;
+    border-color: red;
+}
+
 
