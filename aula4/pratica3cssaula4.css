@@ -1,0 +1,25 @@
+div.apresentacao {
+    background-color: lawngreen;
+    text-align: center;
+}
+
+img#cabra {
+    border: 1px;
+    border-style: double;
+    border-color: black;
+    position: absolute;
+    top: 50 px;
+    left: 50px;
+}
+
+.video_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
