@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro de Pessoa</title>
+</head>
+<body>
+    <main class="card">
+        <h1>Formulário de cadastro</h1>
+        <form action="connectdb.php" method="post" autocomplete="on">
+            <div class="full">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="pesnome" placeholder="Nome" required>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="pesemail" placeholder="Email" required>
+            </div>
+
+            <div>
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="pespassword" placeholder="Senha" minlength="4" required>
+            </div>
+
+            <div>
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="pescidade" placeholder="Cidade" required>
+            </div>
+
+            <div>
+                <label for="estado">Estado</label>
+                <select id="estado" name="pesestado" required>
+                    <option value="">Selecione</option>
+                    <option value="PR">PR</option>
+                    <option value="RS">RS</option>
+                    <option value="SC">SC</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="pescep" placeholder="12345-678" pattern="\d{5}-?\d{3}" required>
+            </div>
+
+            <div class="actions">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
