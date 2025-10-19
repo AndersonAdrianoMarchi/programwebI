@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 9 — Juros Compostos</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:18px}
+    label{display:block;margin-top:8px}
+    input[type=number]{width:200px;padding:6px}
+    table{border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #ccc;padding:6px}
+    .resultado{margin-top:12px}
+  </style>
+</head>
+<body>
+  <h2>Exercício 9 — Parcelamento com Juros Compostos</h2>
+
+  <form id="compForm" action="ex9.php" method="post">
+    <label for="capital">Capital inicial (R$):</label>
+    <input id="capital" name="capital" type="number" step="any" required value="8654">
+
+    <p>Opções de parcelamento: 24, 36, 48, 60 parcelas. Taxa inicia em 2% (24) e aumenta 0.3% por nível.</p>
+
+    <button type="submit">Calcular Parcelas</button>
+  </form>
+
+  <div id="resultado" class="resultado" aria-live="polite"></div>
+
+  <script>
+    document.getElementById('compForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch(form.action, { method: 'POST', body: data, headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(r => r.text())
+        .then(html => document.getElementById('resultado').innerHTML = html)
+        .catch(() => document.getElementById('resultado').innerHTML = '<p style="color:red">Erro ao calcular. Tente novamente.</p>');
+    });
+  </script>
+</body>
+</html>

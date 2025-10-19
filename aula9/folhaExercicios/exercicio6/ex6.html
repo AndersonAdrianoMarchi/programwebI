@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 6 — Feira</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:18px}
+    label{display:block;margin-top:8px}
+    input[type=number]{width:120px;padding:6px}
+    table{border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #ccc;padding:6px}
+    .resultado{margin-top:12px}
+  </style>
+</head>
+<body>
+  <h2>Exercício 6 — Compras do Joãozinho (R$ 50,00)</h2>
+
+  <form id="feiraForm" action="ex6.php" method="post">
+    <table>
+      <thead><tr><th>Produto</th><th>Preço por kg (R$)</th><th>Qtd (kg)</th></tr></thead>
+      <tbody>
+        <tr><td>Maçã</td><td><input name="preco_maca" type="number" step="any" required value="5"></td><td><input name="qtd_maca" type="number" step="any" required value="1"></td></tr>
+        <tr><td>Melancia</td><td><input name="preco_melancia" type="number" step="any" required value="2"></td><td><input name="qtd_melancia" type="number" step="any" required value="1"></td></tr>
+        <tr><td>Laranja</td><td><input name="preco_laranja" type="number" step="any" required value="4"></td><td><input name="qtd_laranja" type="number" step="any" required value="1"></td></tr>
+        <tr><td>Repolho</td><td><input name="preco_repolho" type="number" step="any" required value="3"></td><td><input name="qtd_repolho" type="number" step="any" required value="0.5"></td></tr>
+        <tr><td>Cenoura</td><td><input name="preco_cenoura" type="number" step="any" required value="6"></td><td><input name="qtd_cenoura" type="number" step="any" required value="0.5"></td></tr>
+        <tr><td>Batatinha</td><td><input name="preco_batatinha" type="number" step="any" required value="7"></td><td><input name="qtd_batatinha" type="number" step="any" required value="0.5"></td></tr>
+      </tbody>
+    </table>
+
+    <br>
+    <button type="submit">Calcular Conta</button>
+  </form>
+
+  <div id="resultado" class="resultado" aria-live="polite"></div>
+
+  <script>
+    document.getElementById('feiraForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch(form.action, { method: 'POST', body: data, headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(r => r.text())
+        .then(html => document.getElementById('resultado').innerHTML = html)
+        .catch(() => document.getElementById('resultado').innerHTML = '<p style="color:red">Erro ao calcular. Tente novamente.</p>');
+    });
+  </script>
+</body>
+</html>
