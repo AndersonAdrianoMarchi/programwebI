@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 8 — Parcelamento Juros Simples</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:18px}
+    label{display:block;margin-top:8px}
+    input[type=number]{width:200px;padding:6px}
+    table{border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #ccc;padding:6px}
+    .resultado{margin-top:12px}
+  </style>
+</head>
+<body>
+  <h2>Exercício 8 — Parcelamento com Juros Simples</h2>
+
+  <form id="finForm" action="ex8.php" method="post">
+    <label for="avista">Valor à vista (R$):</label>
+    <input id="avista" name="avista" type="number" step="any" required value="8654">
+
+    <p>Opções de parcelamento (juros simples): 24, 36, 48, 60 parcelas.
+    A taxa começa em 1.5% para 24 parcelas e aumenta 0.5% em cada nível.</p>
+
+    <button type="submit">Calcular Parcelas</button>
+  </form>
+
+  <div id="resultado" class="resultado" aria-live="polite"></div>
+
+  <script>
+    document.getElementById('finForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch(form.action, { method: 'POST', body: data, headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(r => r.text())
+        .then(html => document.getElementById('resultado').innerHTML = html)
+        .catch(() => document.getElementById('resultado').innerHTML = '<p style="color:red">Erro ao calcular. Tente novamente.</p>');
+    });
+  </script>
+</body>
+</html>

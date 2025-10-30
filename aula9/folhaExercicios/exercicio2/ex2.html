@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 2 – Divisível por 2</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:18px}
+    label{display:block;margin-top:8px}
+    input[type=number]{width:200px;padding:6px}
+    .resultado{margin-top:12px}
+    .resultado p{font-size:1.05rem;font-weight:bold}
+  </style>
+</head>
+<body>
+  <h2>Exercício 2 — Testar divisibilidade por 2</h2>
+
+  <form id="divForm" action="ex2.php" method="post">
+    <label for="numero">Digite um número:</label>
+    <input id="numero" name="numero" type="number" required>
+    <br><br>
+    <button type="submit">Verificar</button>
+  </form>
+
+  <div class="resultado" id="resultado" aria-live="polite"></div>
+
+  <script>
+    // Compute divisibility client-side and display the result inline.
+    // Keeps action="ex2.php" as a server fallback; JS prevents navigation.
+    document.getElementById('divForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const raw = document.getElementById('numero').value;
+
+      // Try to parse integer
+      const n = parseInt(raw, 10);
+
+      // Simple sanitization for display
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      const entradaEsc = escapeHtml(raw);
+      const resultadoEl = document.getElementById('resultado');
+
+      if (Number.isNaN(n)) {
+        resultadoEl.innerHTML = `<p style="color:orange">Entrada inválida: ${entradaEsc}</p>`;
+        return;
+      }
+
+      if (n % 2 === 0) {
+        resultadoEl.innerHTML = `<p style="color:green">Valor divisível por 2 (entrada: ${entradaEsc})</p>`;
+      } else {
+        resultadoEl.innerHTML = `<p style="color:red">O valor não é divisível por 2 (entrada: ${entradaEsc})</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

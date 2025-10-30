@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 1 – Soma de Três Valores</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:18px}
+    label{display:block;margin-top:8px}
+    input[type=number]{width:200px;padding:6px}
+    .resultado{margin-top:12px}
+    .resultado p{font-size:1.05rem}
+  </style>
+</head>
+<body>
+  <h2>Exercício 1 — Soma de três valores</h2>
+
+  <!-- Formulário envia os dados para o arquivo PHP -->
+  <form id="somaForm" action="ex1.php" method="post">
+    <label for="a">Primeiro valor (A):</label>
+    <input id="a" name="a" type="number" step="any" required value="A"><br><br>
+
+    <label for="b">Segundo valor (B):</label>
+    <input id="b" name="b" type="number" step="any" required value="B"><br><br>
+
+    <label for="c">Terceiro valor (C):</label>
+    <input id="c" name="c" type="number" step="any" required value="C"><br><br>
+
+    <button type="submit">Calcular Soma</button>
+  </form>
+
+  <div class="resultado" id="resultado" aria-live="polite"></div>
+
+  <script>
+    // Compute sum client-side and display result under the form.
+    // The form keeps action="ex1.php" but we prevent navigation to demonstrate client-side behavior.
+    document.getElementById('somaForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Read raw values (they may be strings like "A"/"B"/"C")
+      const aRaw = document.getElementById('a').value;
+      const bRaw = document.getElementById('b').value;
+      const cRaw = document.getElementById('c').value;
+
+      // Try to parse as numbers; if not a number, treat as 0 and keep the original string for display
+      const aNum = parseFloat(aRaw);
+      const bNum = parseFloat(bRaw);
+      const cNum = parseFloat(cRaw);
+
+      const aVal = Number.isFinite(aNum) ? aNum : 0;
+      const bVal = Number.isFinite(bNum) ? bNum : 0;
+      const cVal = Number.isFinite(cNum) ? cNum : 0;
+
+      const sum = aVal + bVal + cVal;
+
+      // Determine color rules (apply first match):
+      // 1) if A > 10 -> blue
+      // 2) elseif B < C -> green
+      // 3) elseif C < A && C < B -> red
+      let color = 'black';
+      if (aVal > 10) {
+        color = 'blue';
+      } else if (bVal < cVal) {
+        color = 'green';
+      } else if (cVal < aVal && cVal < bVal) {
+        color = 'red';
+      }
+
+      // Escape text for insertion (simple replacement)
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      const aEsc = escapeHtml(aRaw);
+      const bEsc = escapeHtml(bRaw);
+      const cEsc = escapeHtml(cRaw);
+
+      const resultado = document.getElementById('resultado');
+      resultado.innerHTML = `<p style="color:${color}">A soma de ${aEsc} + ${bEsc} + ${cEsc} é <strong>${sum}</strong>.</p>`;
+    });
+  </script>
+</body>
+</html>

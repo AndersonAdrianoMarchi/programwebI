@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+        <meta charset="UTF-8">
+        <title>Exercício 3 - Área do Quadrado</title>
+        <style>
+            body{font-family:Arial,Helvetica,sans-serif;margin:18px}
+            label{display:block;margin-top:8px}
+            input[type=number]{width:120px;padding:6px}
+        </style>
+</head>
+<body>
+        <h2>Exercício 3 — Calcular área do quadrado</h2>
+
+            <form id="areaForm" action="ex3.php" method="post">
+                <label for="lado">Comprimento do lado (metros):</label>
+                <input id="lado" name="lado" type="number" step="any" required value="3">
+                <br><br>
+                <button type="submit">Calcular Área</button>
+            </form>
+
+            <div id="resultado" class="resultado" aria-live="polite"></div>
+
+            <p>Ao submeter, o PHP calculará a área e exibirá uma frase com o resultado.</p>
+
+            <script>
+                // Submit form via fetch to ex3.php and display the returned fragment under the input
+                document.getElementById('areaForm').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const form = e.target;
+                    const data = new FormData(form);
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: data,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(resp => resp.text())
+                    .then(html => {
+                        document.getElementById('resultado').innerHTML = html;
+                    })
+                    .catch(err => {
+                        document.getElementById('resultado').innerHTML = '<p style="color:red">Erro ao calcular. Tente novamente.</p>';
+                        console.error(err);
+                    });
+                });
+            </script>
+</body>
+</html>
